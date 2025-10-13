@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import DisplayCards from "@/components/ui/display-cards";
+import { Zap, Shield, Clock, Mail, Linkedin, Twitter } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -17,6 +19,39 @@ const Index = () => {
     email: "",
     prompt: "",
   });
+
+  const advantageCards = [
+    {
+      icon: <Zap className="size-4 text-primary" />,
+      title: "Fast Solutions",
+      description: "AI roadmap in 3-5 minutes",
+      date: "Instant delivery",
+      iconClassName: "text-primary",
+      titleClassName: "text-primary",
+      className:
+        "[grid-area:stack] hover:-translate-y-10 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+    },
+    {
+      icon: <Shield className="size-4 text-primary" />,
+      title: "Expert Guidance",
+      description: "Tailored AI implementation",
+      date: "Professional advice",
+      iconClassName: "text-primary",
+      titleClassName: "text-primary",
+      className:
+        "[grid-area:stack] translate-x-16 translate-y-10 hover:-translate-y-1 before:absolute before:w-[100%] before:outline-1 before:rounded-xl before:outline-border before:h-[100%] before:content-[''] before:bg-blend-overlay before:bg-background/50 grayscale-[100%] hover:before:opacity-0 before:transition-opacity before:duration-700 hover:grayscale-0 before:left-0 before:top-0",
+    },
+    {
+      icon: <Clock className="size-4 text-primary" />,
+      title: "Save Time",
+      description: "Automated AI strategies",
+      date: "Efficient process",
+      iconClassName: "text-primary",
+      titleClassName: "text-primary",
+      className:
+        "[grid-area:stack] translate-x-32 translate-y-20 hover:translate-y-10",
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,12 +120,27 @@ const Index = () => {
         />
       </div>
 
+      {/* Advantages Section with Animated Cards */}
+      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-background to-secondary/10">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-foreground">
+            Why Choose AI-Automate IT?
+          </h2>
+          <div className="flex justify-center items-center min-h-[400px] md:min-h-[500px] overflow-hidden">
+            <DisplayCards cards={advantageCards} />
+          </div>
+        </div>
+      </section>
+
       {/* Form Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-background to-secondary/20">
+      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-secondary/10 to-background">
         <div className="container mx-auto max-w-2xl">
-          <div className="bg-card rounded-2xl shadow-lg border border-border p-8 md:p-12">
+          <div className="bg-card rounded-2xl shadow-lg border border-border p-6 md:p-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-foreground">
+              Get Your Free AI Roadmap
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="firstName" className="text-foreground font-medium">
                     First Name
@@ -152,7 +202,7 @@ const Index = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, prompt: e.target.value })
                   }
-                  className="rounded-xl border-input focus:border-primary focus:ring-primary min-h-[150px] resize-none"
+                  className="rounded-xl border-input focus:border-primary focus:ring-primary min-h-[120px] md:min-h-[150px] resize-none"
                   required
                 />
               </div>
@@ -160,18 +210,78 @@ const Index = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl py-6 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full rounded-xl py-5 md:py-6 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 {isSubmitting ? "Submitting..." : "Get your free AI implementation guide"}
               </Button>
+
+              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-4">
+                <Shield className="w-4 h-4" />
+                <p>Your information is kept a secret with us</p>
+              </div>
             </form>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-muted-foreground">
-        <p className="text-sm">© 2025 AI-Automate IT. All rights reserved.</p>
+      <footer className="bg-secondary/20 border-t border-border py-8 md:py-12 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Company Info */}
+            <div className="text-center md:text-left">
+              <h3 className="text-xl font-bold text-foreground mb-3">AI-Automate IT</h3>
+              <p className="text-muted-foreground text-sm">
+                Expert AI consulting and implementation services to transform your business.
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div className="text-center">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    Privacy Policy
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="text-center md:text-right">
+              <h4 className="text-lg font-semibold text-foreground mb-3">Connect With Us</h4>
+              <div className="flex justify-center md:justify-end gap-4 mb-3">
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Mail className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+              </div>
+              <p className="text-sm text-muted-foreground">info@ai-automate-it.com</p>
+            </div>
+          </div>
+
+          <div className="border-t border-border pt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              © 2025 AI-Automate IT. All rights reserved.
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
