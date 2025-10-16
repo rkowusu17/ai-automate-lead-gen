@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="AI-IT favicon">
+  <!-- Rounded square background to ensure visibility in favicon contexts -->
+  <rect width="120" height="120" rx="20" fill="#0b1220" />
+
+  <!-- Centered text. The viewBox leaves padding around the text so it won't touch edges. -->
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central"
+        fill="#ffffff" font-family="Inter, system-ui, Arial, sans-serif"
+        font-weight="700" font-size="34">AI-IT</text>
+</svg>

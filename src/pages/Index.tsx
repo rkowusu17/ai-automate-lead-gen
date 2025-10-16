@@ -55,9 +55,14 @@ const Index = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
-    if (!formData.firstName.trim() || !formData.lastName.trim() || !formData.email.trim() || !formData.prompt.trim()) {
+    if (
+      !formData.firstName.trim() ||
+      !formData.lastName.trim() ||
+      !formData.email.trim() ||
+      !formData.prompt.trim()
+    ) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
@@ -80,18 +85,21 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://rkowusu17.app.n8n.cloud/webhook/643d1103-7e1a-45b0-ae36-22dfa290298b", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          prompt: formData.prompt,
-        }),
-      });
+      const response = await fetch(
+        "https://rkowusu17.app.n8n.cloud/webhook/643d1103-7e1a-45b0-ae36-22dfa290298b",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            prompt: formData.prompt,
+          }),
+        }
+      );
 
       if (response.ok) {
         navigate("/confirmation");
@@ -114,17 +122,17 @@ const Index = () => {
       {/* Hero Section with Geometric Animation */}
       <div className="relative">
         <HeroGeometric
-          badge="AI Solutions"
-          title1="AI-Automate IT"
+          badge="AI-IT Solutions"
+          title1="AI-Automate-IT"
           title2="Get your free AI implementation roadmap"
         />
       </div>
 
       {/* Advantages Section with Animated Cards */}
-      <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-background to-secondary/10">
+      <section className="py-12 md:py-20 px-4 bg-blue-100/45">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl md:text-4xl font-bold text-center mb-8 md:mb-16 text-foreground">
-            Why Choose AI-Automate IT?
+          <h2 className="text-2xl md:text-4xl font-bold text-center text-foreground">
+            Why Choose AI-Automate-IT?
           </h2>
           <div className="flex justify-center items-center min-h-[400px] md:min-h-[500px] overflow-hidden">
             <DisplayCards cards={advantageCards} />
@@ -142,7 +150,10 @@ const Index = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="firstName"
+                    className="text-foreground font-medium"
+                  >
                     First Name
                   </Label>
                   <Input
@@ -152,13 +163,16 @@ const Index = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, firstName: e.target.value })
                     }
-                    className="rounded-xl border-input focus:border-primary focus:ring-primary"
+                    className="rounded-xl border-none border-input focus:border-primary focus:ring-primary outline-none"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="lastName"
+                    className="text-foreground font-medium"
+                  >
                     Last Name
                   </Label>
                   <Input
@@ -168,7 +182,7 @@ const Index = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, lastName: e.target.value })
                     }
-                    className="rounded-xl border-input focus:border-primary focus:ring-primary"
+                    className="rounded-xl border-none outline-none border-input focus:border-primary focus:ring-primary"
                     required
                   />
                 </div>
@@ -186,7 +200,7 @@ const Index = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="rounded-xl border-input focus:border-primary focus:ring-primary"
+                  className="rounded-xl border-none outline-none border-input focus:border-primary focus:ring-primary"
                   required
                 />
               </div>
@@ -202,7 +216,7 @@ const Index = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, prompt: e.target.value })
                   }
-                  className="rounded-xl border-input focus:border-primary focus:ring-primary min-h-[120px] md:min-h-[150px] resize-none"
+                  className="rounded-xl  outline-none border-input focus:border-none focus:border-primary focus:ring-primary min-h-[120px] md:min-h-[150px] resize-none"
                   required
                 />
               </div>
@@ -212,7 +226,9 @@ const Index = () => {
                 disabled={isSubmitting}
                 className="w-full rounded-xl py-5 md:py-6 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                {isSubmitting ? "Submitting..." : "Get your free AI implementation guide"}
+                {isSubmitting
+                  ? "Submitting..."
+                  : "Get your free AI implementation guide"}
               </Button>
 
               <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-4">
@@ -230,28 +246,43 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Company Info */}
             <div className="text-center md:text-left">
-              <h3 className="text-xl font-bold text-foreground mb-3">AI-Automate IT</h3>
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                AI-Automate IT
+              </h3>
               <p className="text-muted-foreground text-sm">
-                Expert AI consulting and implementation services to transform your business.
+                Expert AI consulting and implementation services to transform
+                your business.
               </p>
             </div>
 
             {/* Quick Links */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Quick Links</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-3">
+                Quick Links
+              </h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    href="https://github.com/rkowusu17"
+                    target="_blank"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     About Us
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                {/* <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     Services
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <a
+                    onClick={() => navigate("/privacy")}
+                    className="text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+                  >
                     Privacy Policy
                   </a>
                 </li>
@@ -260,19 +291,35 @@ const Index = () => {
 
             {/* Contact */}
             <div className="text-center md:text-right">
-              <h4 className="text-lg font-semibold text-foreground mb-3">Connect With Us</h4>
+              <h4 className="text-lg font-semibold text-foreground mb-3">
+                Connect With Us
+              </h4>
               <div className="flex justify-center md:justify-end gap-4 mb-3">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a
+                  href="mailto:owusureginald17@gmail.com"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   <Mail className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a
+                  href="https://www.linkedin.com/in/reginald-owusu-b16ba5202/"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a
+                  href="https://x.com/Re_ggie12"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
                   <Twitter className="w-5 h-5" />
                 </a>
               </div>
-              <p className="text-sm text-muted-foreground">info@ai-automate-it.com</p>
+              {/* <p className="text-sm text-muted-foreground">
+                <a href="mailto:owusureginald17@gmail.com"></a>
+              </p> */}
             </div>
           </div>
 
