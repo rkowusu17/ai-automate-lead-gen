@@ -84,7 +84,8 @@ const Index = () => {
 
     setIsSubmitting(true);
 
-    try {
+    //rkowusu17.app.n8n.cloud/webhook-test/643d1103-7e1a-45b0-ae36-22dfa290298b
+    https: try {
       const response = await fetch(
         "https://rkowusu17.app.n8n.cloud/webhook/643d1103-7e1a-45b0-ae36-22dfa290298b",
         {
@@ -103,6 +104,7 @@ const Index = () => {
 
       if (response.ok) {
         navigate("/confirmation");
+        console.log("Form submitted successfully");
       } else {
         throw new Error("Failed to submit");
       }
@@ -130,11 +132,11 @@ const Index = () => {
 
       {/* Advantages Section with Animated Cards */}
       <section className="py-12 md:py-20 px-4 bg-blue-100/45">
-        <div className="container mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl">
           <h2 className="text-2xl md:text-4xl font-bold text-center text-foreground">
             Why Choose AI-Automate-IT?
           </h2>
-          <div className="flex justify-center items-center min-h-[400px] md:min-h-[500px] overflow-hidden">
+          <div className="flex justify-center items-center min-h-[350px] md:min-h-[400px] overflow-hidden">
             <DisplayCards cards={advantageCards} />
           </div>
         </div>
@@ -142,12 +144,15 @@ const Index = () => {
 
       {/* Form Section */}
       <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-secondary/10 to-background">
-        <div className="container mx-auto max-w-2xl">
-          <div className="bg-card rounded-2xl shadow-lg border border-border p-6 md:p-12">
+        <div className="container mx-auto w-full">
+          <div className="bg-card rounded-2xl w-full shadow-lg border border-border p-3 md:p-12">
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 text-foreground">
               Get Your Free AI Roadmap
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 w-full md:[w-3/4] lg:w-1/2 mx-auto"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div className="space-y-2">
                   <Label
@@ -224,16 +229,16 @@ const Index = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl py-5 md:py-6 text-base md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full rounded-xl text-sm py-5 px-3 md:py-6 md:text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                {isSubmitting
-                  ? "Submitting..."
-                  : "Get your free AI implementation guide"}
+                {isSubmitting ? "Submitting..." : "Get AI implementation guide"}
               </Button>
 
-              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-4">
+              <div className="flex items-center whitespace-nowrap justify-center gap-2 text-sm text-muted-foreground pt-4">
                 <Shield className="w-4 h-4" />
-                <p>Your information is kept a secret with us</p>
+                <p className="text-center">
+                  Your information is kept a secret with us
+                </p>
               </div>
             </form>
           </div>
